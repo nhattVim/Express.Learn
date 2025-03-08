@@ -1,0 +1,14 @@
+# Bỏ qua thư mục node_modules
+node_modules/
+
+# Bỏ qua file lock của package manager
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Bỏ qua thư mục build nếu có
+dist/
+build/
+
+# Bỏ qua mọi thư mục public/css trong repo
+**/public/css/
