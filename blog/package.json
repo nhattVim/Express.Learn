@@ -7,17 +7,32 @@
     "type": "commonjs",
     "main": "src/index.js",
     "scripts": {
+        "format": "lint-staged",
         "start": "nodemon --inspect src/index.js",
         "watch": "sass --watch --no-source-map src/resources/scss/app.scss:public/css/app.css",
-        "test": "echo \"Error: no test specified\" && exit 1"
+                    "test": "echo \"Error: no test specified\" && exit 1"
+    },
+                "lint-staged": {
+        "*.{js,json,ts,css,html}": [
+            "prettier --single-quote --trailing-comma all --no-semi --tab-width 4 --write",
+            "git add"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run format"
+        }
     },
     "dependencies": {
         "express": "^4.21.2",
         "express-handlebars": "^8.0.1"
     },
     "devDependencies": {
+        "husky": "^9.1.7",
+        "lint-staged": "^15.5.0",
         "morgan": "^1.10.0",
         "nodemon": "^3.1.9",
+        "prettier": "^3.5.3",
         "sass": "^1.85.1",
         "scss": "^0.2.4"
     }
