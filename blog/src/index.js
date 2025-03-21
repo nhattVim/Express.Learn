@@ -5,6 +5,8 @@ const { engine } = require("express-handlebars");
 const app = express();
 const port = 3000;
 
+const route = require("./routes");
+
 // Configure Handlebars as template engine
 app.engine("hbs", engine({ extname: ".hbs" }));
 app.set("view engine", "hbs");
@@ -15,13 +17,7 @@ app.use(express.static("public")); // static files
 app.use(morgan("combined")); // HTTP Logger
 
 // Route handler
-app.get("/", (req, res) => {
-    res.render("home");
-});
-
-app.get("/news", (req, res) => {
-    res.render("news");
-});
+route(app)
 
 // Start server
 app.listen(port, () => {
