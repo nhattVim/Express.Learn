@@ -6,6 +6,10 @@ const app = express()
 const port = 3000
 
 const route = require('./routes')
+const db = require('./config/db')
+
+// Connect to database
+db.connect()
 
 // Configure Handlebars as template engine
 app.engine('hbs', engine({ extname: '.hbs' }))
