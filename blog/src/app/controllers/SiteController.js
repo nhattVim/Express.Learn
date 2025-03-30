@@ -6,13 +6,13 @@ class SiteController {
     //     res.render('home')
     // }
 
-    async index(req, res) {
+    // [GET] /home
+    async index(req, res, next) {
         try {
-            const courses = await Course.find({});
-            res.json(courses);
-        } catch (err) {
-            console.error(err); // log lỗi để debug
-            res.status(400).json({ error: 'ERROR!!!' });
+            const courses = await Course.find({}).lean();
+            res.render('home', { courses });
+        } catch (error) {
+            next(error);
         }
     }
 
