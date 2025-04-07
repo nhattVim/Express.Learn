@@ -3,9 +3,13 @@
         {{#each courses as |item|}}
         <div class="col-sm-6 col-lg-4">
             <div class="card card-course-item" style="width: 18rem;">
-                <img src="{{item.image}}" class="card-img-top card-course-img" alt="{{item.name}}">
+                <a href="/courses/{{item.slug}}">
+                    <img src="{{item.image}}" class="card-img-top card-course-img" alt="{{item.name}}">
+                </a>
                 <div class="card-body">
-                    <h5 class="card-title">{{item.name}}</h5>
+                    <a href="/courses/{{item.slug}}">
+                        <h5 class="card-title">{{item.name}}</h5>
+                    </a>
                     <p class="card-text">{{item.description}}</p>
                     <a href="#" class="btn btn-primary">Mua khoá học</a>
                 </div>
