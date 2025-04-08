@@ -2,7 +2,7 @@ const database = 'F8_education';
 const collection = 'cources';
 
 use(database);
-db.createCollection(collection);
+// db.createCollection(collection);
 
 db.getCollection('courses').insertMany([
     {

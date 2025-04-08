@@ -63,6 +63,33 @@ class CourseController {
             .then(() => res.redirect('back'))
             .catch(next);
     }
+
+    // [POST] /course/handle-form-action
+    handleFormAction(req, res, next) {
+        switch (req.body.action) {
+            case 'delete':
+                Course.delete({ _id: { $in: req.body.courseIds } }).lean()
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+
+            case 'restore':
+                Course.restore({ _id: { $in: req.body.courseIds } }).lean()
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+
+            case 'deleteForce':
+                Course.deleteMany({ _id: { $in: req.body.courseIds } }).lean()
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+
+            default:
+                res.json({ message: 'Action not found' });
+                break;
+        }
+    }
 }
 
 module.exports = new CourseController()
